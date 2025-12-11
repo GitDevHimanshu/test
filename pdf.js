@@ -29,6 +29,6 @@ app.get('/api/test', (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running`);
     console.log(`Rate Limit: 5 requests per 10 seconds.`);
 });
