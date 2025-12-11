@@ -2,8 +2,9 @@ const express = require('express');
 // const rateLimit = require('express-rate-limit');
 
 const app = express();
-const PORT = 3000;
+const dotenv = require("dotenv")
 
+dotenv.config()
 // // Define the Rate Limiter
 // const apiLimiter = rateLimit({
 //     windowMs: 10 * 1000, // 10 seconds (Short window for testing)
@@ -27,7 +28,7 @@ app.get('/api/test', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`Server running on http://localhost:${PORT}`);
     console.log(`Rate Limit: 5 requests per 10 seconds.`);
 });
