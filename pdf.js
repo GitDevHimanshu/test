@@ -20,6 +20,8 @@ dotenv.config()
 // Apply the limiter to the specific route
 // app.use(apiLimiter);
 
+app.set('trust proxy', 1);
+
 app.get('/api/test', (req, res) => {
     console.log(req.ip)
     res.json({ 
