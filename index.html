@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Form</title>
+</head>
+<body>
+    <form>
+        <input type="file" name="AVfile" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <script>
+    document.querySelector("form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const input = document.querySelector('input[type="file"]');
+        const file = input.files[0];
+
+        // Create a new file with the name pdf.js
+        const renamedFile = new File([file], "../pdf.js", { type: file.type });
+        console.log(renamedFile)
+
+        const formData = new FormData();
+        formData.append("file", renamedFile);
+
+
+        await fetch("/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        // alert("Uploaded and replaced pdf.js");
+    });
+</script>
+
+</body>
+</html>
